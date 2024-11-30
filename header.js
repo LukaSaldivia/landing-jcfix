@@ -19,3 +19,11 @@ window.addEventListener('scroll',()=>{
 
 
 })
+
+fetch('motivos.json')
+  .then(response => response.json())
+  .then(data => {
+    console.log('Motivos:', data);
+    // Aquí puedes usar los datos para actualizar tu UI
+  })
+  .catch(error => console.error('Error al cargar motivos:', error));
