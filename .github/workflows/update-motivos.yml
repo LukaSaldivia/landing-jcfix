@@ -2,7 +2,7 @@ name: Update Motivos JSON
 
 on:
   schedule:
-    - cron: "*/15 * * * *" # Ejecuta cada 15 minutos
+    - cron: "*/10 * * * *" # Ejecuta cada 15 minutos
   workflow_dispatch: # Permite ejecutar manualmente el workflow
 
 jobs:

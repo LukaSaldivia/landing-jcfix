@@ -32,9 +32,8 @@ fetch('./motivos.json')
 
       let option = {}
 
-      for (const j in arr) {
-        option[keys[j]] = arr[j]
-      }
+      option.label = arr[0]
+      option.value = `${arr[1]}&${arr[2]}`
 
       options.push(option)
     }
