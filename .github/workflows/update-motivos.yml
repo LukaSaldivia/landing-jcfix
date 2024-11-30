@@ -21,19 +21,8 @@ jobs:
           API_URL="https://api.apico.dev/v1/80f030/1Ix-MDYTz3bLzql2HiMPnuKAOQd2B6tDEet2eGTu0R7g/values/Sheet1" # Cambia esto por tu URL
           curl -s "$API_URL" > motivos.json
 
-      # 3. Confirmar si hubo algún cambio en `motivos.json`
-      - name: Check for changes
-        run: |
-          if ! git diff --exit-code motivos.json; then
-            echo "Changes detected in motivos.json."
-            echo "update=true" >> $GITHUB_ENV
-          else
-            echo "No changes in motivos.json."
-            echo "update=false" >> $GITHUB_ENV
-
       # 4. Subir los cambios (si hubo alguno)
       - name: Commit and push changes
-        if: env.update == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
