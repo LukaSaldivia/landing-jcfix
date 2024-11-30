@@ -23,7 +23,23 @@ window.addEventListener('scroll',()=>{
 fetch('./motivos.json')
   .then(response => response.json())
   .then(data => {
-    console.log('Motivos:', data);
-    // Aquí puedes usar los datos para actualizar tu UI
+    let {values} = data
+    let keys = values.shift()
+
+    let options = []
+
+    for (const arr of values) {
+
+      let option = {}
+
+      for (const j in arr) {
+        option[keys[j]] = arr[j]
+      }
+
+      options.push(option)
+    }
+
+    console.table(options);
+    
   })
   .catch(error => console.error('Error al cargar motivos:', error));
