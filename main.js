@@ -13,7 +13,7 @@ window.addEventListener('scroll',()=>{
     actualScroll = window.scrollY + header.clientHeight
   }
   
-  header.setAttribute("style", `--_top:${top}px`);
+  header.setAttribute("style", `--_top-header:${top}px`);
   header.classList.toggle('active',window.scrollY < actualScroll)
   header.classList.toggle('clr',window.scrollY > header.clientHeight)
 
@@ -24,7 +24,7 @@ fetch('./motivos.json')
   .then(response => response.json())
   .then(data => {
     let {values} = data
-    let keys = values.shift()
+    values.shift()
 
     let options = []
 
