@@ -169,7 +169,6 @@ a.overflow-effect {
   --_clr-base: var(--clr-neutral-light-500);
   --_clr-hover: var(--clr-neutral-light-500);
   --_top: 10px;
-  /* padding-block */
   --_rest-transitions: box-shadow .3s ease-in-out;
 
   &:hover {
@@ -194,7 +193,7 @@ body,
   --padding-inline: 16px;
   --content-max-width: 1080px;
 
-  --content-size: min(var(--content-max-width), 100vw);
+  --content-size: min(var(--content-max-width), calc(100vw - var(--padding-inline) * 2));
   --full-width-size: minmax(0, auto);
 
   display: grid;
@@ -216,6 +215,7 @@ body,
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 body {
@@ -364,6 +364,36 @@ body>main {
     }
   }
 
+  .marcas{
+    grid-column: full-width;
+    overflow: hidden;
+    position: relative;
+
+    &::before{
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+
+      background: linear-gradient(90deg, var(--clr-neutral-light-500) , transparent 10%, transparent 90%, var(--clr-neutral-light-500) 100%);
+
+    }
+
+    .slider{
+      z-index: -1;
+      display: flex;      
+      grid-column: full-width;
+      gap: 100px;
+
+      animation: slide 20s linear infinite;
+
+      > * {
+        min-width: fit-content;
+      }
+
+    }
+  }
+
 
 }
 
@@ -384,5 +414,11 @@ body>footer {
   to {
     translate: 0px 6px;
     rotate: 2deg;
+  }
+}
+
+@keyframes slide {
+  to{
+    translate: -1195px;
   }
 }
