@@ -366,30 +366,38 @@ body>main {
 
   .marcas{
     grid-column: full-width;
-    overflow: hidden;
+    overflow: clip;
     position: relative;
-
-    &::before{
-      position: absolute;
-      content: '';
-      width: 100%;
-      height: 100%;
-
-      background: linear-gradient(90deg, var(--clr-neutral-light-500) , transparent 10%, transparent 90%, var(--clr-neutral-light-500) 100%);
-
-    }
+    --_gap : 100px;
+    mask-image: 
+    linear-gradient(
+      to right,
+      transparent,
+      black var(--_gap),
+      black calc(100% - var(--_gap)),
+      transparent
+    );
 
     .slider{
-      z-index: -1;
       display: flex;      
+      align-items: center;
       grid-column: full-width;
-      gap: 100px;
+      gap: var(--_gap);
+      padding-left: var(--_gap);
+      width: max-content;
 
-      animation: slide 20s linear infinite;
+
+      animation: slide 10s linear infinite;
 
       > * {
         min-width: fit-content;
+
+        &:not([aria-hidden="true"]) + *{
+          order: -1;
+        }
       }
+
+
 
     }
   }
@@ -399,7 +407,6 @@ body>main {
 
 body>footer {
   grid-row: footer;
-  height: 600px;
 }
 
 
@@ -419,6 +426,6 @@ body>footer {
 
 @keyframes slide {
   to{
-    translate: -1195px;
+    translate: -50%;
   }
 }

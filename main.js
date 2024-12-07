@@ -1,7 +1,7 @@
 const $ = (selector = '') => document.querySelector(selector)
 const _$ = (element = HTMLElement, selector = '') => element.querySelector(selector)
 const $$ = (selector = '') => document.querySelectorAll(selector)
-const { format } = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'ARS', currencyDisplay : 'narrowSymbol' , maximumFractionDigits : 0})
+const { format } = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'ARS', currencyDisplay : 'symbol' , maximumFractionDigits : 0})
 
 
 // Header scroll behaviour
