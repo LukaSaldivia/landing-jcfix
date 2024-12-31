@@ -1,14 +1,1 @@
-<!doctype html>
-<html data-adblockkey="MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBANDrp2lz7AOmADaN8tA50LsWcjLFyQFcb/P2Txc58oYOeILb3vBw7J6f4pamkAQVSQuqYsKx3YzdUHCvbVZvFUsCAwEAAQ==_rIyY+PR3RszQdu9bq57SQAr7f7fzJck3w3UIGTd4Jw9N6fe/7poON9BWgHyTSu/sON4VkaGMVcK/lSk28/LB+g==" lang="en" style="background: #2B2B2B;">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVQI12P4//8/AAX+Av7czFnnAAAAAElFTkSuQmCC">
-    <link rel="preconnect" href="https://www.google.com" crossorigin>
-</head>
-<body>
-<div id="target" style="opacity: 0"></div>
-<script>window.park = "eyJ1dWlkIjoiOGNmMGQyMjYtMmU3NC00ODM3LWFhNWYtMWNhZGY1MjFiMjI4IiwicGFnZV90aW1lIjoxNzM1NjQ5OTAxLCJwYWdlX3VybCI6Imh0dHBzOi8vYXBpLmFwaWNvLmRldi92MS84MGYwMzAvMUl4LU1EWVR6M2JMenFsMkhpTVBudUtBT1FkMkI2dERFZXQyZUdUdTBSN2cvdmFsdWVzL1NoZWV0MSIsInBhZ2VfbWV0aG9kIjoiR0VUIiwicGFnZV9yZXF1ZXN0Ijp7fSwicGFnZV9oZWFkZXJzIjp7fSwiaG9zdCI6ImFwaS5hcGljby5kZXYiLCJpcCI6IjIwLjgxLjE1OS45NiJ9Cg==";</script>
-<script src="/bpNLIYCdJ.js"></script>
-</body>
-</html>
+{"range":"Sheet1!A1:Z1000","majorDimension":"ROWS","values":[["motivo","min","max"],["No enciende","10000","15000"],["Se mojó","2000","6000"],["Ya no carga","9500","11500"],["La cámara está rota","25000","40000"],["No anda el táctil","60000","95000"]]}
