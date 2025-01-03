@@ -404,6 +404,66 @@ body>main {
 
 
 }
+.valoraciones{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carrouselvaloraciones{
+  display: flex;
+  flex-direction: row;
+  margin-top: 100px;
+  align-items: center;
+  gap: 30px;
+  animation: slide 10s linear infinite;
+
+}
+.user-review{
+  width: 450px;
+  height: 173px;
+  background-color:white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 24px 24px;
+}
+.user-review>.user-info-rating{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+ 
+}
+.user-info-rating>.container>.user-image>img{
+  height: 60px;
+  width: 60px;
+  
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  
+}
+.container>.user-name{
+  font-size: 18px;
+  font-weight: var(--fw-light);
+  margin-left: 14px;
+}
+.user-review>.user-info-rating>.user-review-text{
+
+font-weight: 600;
+align-items: center;
+color: #4C4949;
+justify-items: center;
+margin-left: 80px;
+
+
+
+}
+
+
 
 body>footer {
   grid-row: footer;
