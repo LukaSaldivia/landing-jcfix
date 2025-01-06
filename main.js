@@ -65,13 +65,10 @@ fetch('./motivos.json')
 
 problemasSelect.addEventListener('change', () => {
 
-
   [min, max] = problemasSelect.value.split('&')
 
   _$($('#costos'), '.min').innerText = format(min)
   _$($('#costos'), '.max').innerText = format(max)
-
-
 
 })
 
