@@ -506,7 +506,7 @@ body>main {
           }
 
           >p{
-            width: 30ch;
+            width: min(30ch, 100%);
             text-wrap: pretty;
           }
         }
