@@ -105,5 +105,4 @@ const observer_guide_items = new IntersectionObserver((entries) => {
 }, { threshold: 1 });
 
 guide_items.map(guide_item => observer_guide_items.observe(guide_item))
-// observer_guide_items.observe(guide_items)
 

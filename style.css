@@ -479,14 +479,12 @@ body>main {
         }
 
         >.circle{
-          box-sizing: content-box;
           background-color: var(--_clr);
           aspect-ratio: 1;
           width: 75px;
           grid-column: icon;
           border-radius: 50%;
           grid-row: var(--_row);
-          border: 10px solid var(--clr-neutral-light-500);
 
           place-items: center;
 
