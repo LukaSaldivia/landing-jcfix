@@ -439,6 +439,9 @@ body>main {
       grid-template-columns: [content-left-start] 1fr [content-left-end icon-start] auto [icon-end content-right-start] 1fr [content-right-end];
       column-gap: 24px;
       row-gap: 250px;
+
+      justify-items: center;
+
       position: relative;
 
       >.guide-item{
@@ -476,11 +479,14 @@ body>main {
         }
 
         >.circle{
+          box-sizing: content-box;
           background-color: var(--_clr);
           aspect-ratio: 1;
           width: 75px;
           grid-column: icon;
           border-radius: 50%;
+          grid-row: var(--_row);
+          border: 10px solid var(--clr-neutral-light-500);
 
           place-items: center;
 
@@ -510,6 +516,13 @@ body>main {
             text-wrap: pretty;
           }
         }
+      }
+
+      &::before{
+        content: '';
+        grid-column: icon;
+        grid-row: 1/5;
+        border-left: 10px dashed var(--clr-primary-300);
       }
 
     }
