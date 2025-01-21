@@ -1,7 +1,7 @@
 const $ = (selector = '') => document.querySelector(selector)
 const _$ = (element = HTMLElement, selector = '') => element.querySelector(selector)
 const $$ = (selector = '') => document.querySelectorAll(selector)
-const { format } = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'ARS', currencyDisplay : 'symbol' , maximumFractionDigits : 0})
+const { format } = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', currencyDisplay: 'code', maximumFractionDigits: 0 })
 
 
 // Header scroll behaviour
@@ -72,4 +72,38 @@ problemasSelect.addEventListener('change', () => {
 
 })
 
+// 
+const guide_items = [...$$('.guide .guide-item .circle')]
+let last_intersected = 0
+
+const observer_guide_items = new IntersectionObserver((entries) => {
+
+
+
+  entries.map((entry, i) => {
+
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active')
+      last_intersected = guide_items.indexOf(entry.target)    
+    }
+
+    if (last_intersected == 0) {
+      guide_items.map((guide_item,i) => {
+        if (i != 0) {
+          guide_item.classList.remove('active')
+        }
+      })
+    }
+
+
+
+
+
+  })
+
+
+}, { threshold: 1 });
+
+guide_items.map(guide_item => observer_guide_items.observe(guide_item))
+// observer_guide_items.observe(guide_items)
 

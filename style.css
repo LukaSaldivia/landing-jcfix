@@ -4,7 +4,7 @@
 
   /* Timing functions */
 
-  --tf-bounce: cubic-bezier(0.8, -1, .2, 2);
+  --tf-bounce: cubic-bezier(0.8, -1, .5, 2);
 
   /* Colores */
 
@@ -394,6 +394,7 @@ body>main {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       padding: 24px 24px;
       transition: filter .3s ease-in-out;
+      cursor: default;
     
       grid-template-columns: [profile-image-start] 60px [profile-image-end name-and-rating-start] auto [name-and-rating-end];
       grid-template-rows: 
@@ -426,6 +427,89 @@ body>main {
       > .user-review-text{
         grid-column: name-and-rating;
         grid-row: review;
+      }
+
+    }
+  }
+
+  .guide{
+
+    >.roadmap{
+      display: grid;
+      grid-template-columns: [content-left-start] 1fr [content-left-end icon-start] auto [icon-end content-right-start] 1fr [content-right-end];
+      column-gap: 24px;
+      row-gap: 250px;
+      position: relative;
+
+      >.guide-item{
+        display: contents;
+        --_clr : grey;
+
+        &.contacto{
+          --_clr: #E706D0;
+        }
+        &.presupuesto{
+          --_clr: #5CE142;
+        }
+        &.tiempo{
+          --_clr: #9560FF;
+        }
+        &.listo{
+          --_clr: #FFCC00;
+        }
+
+        &:nth-of-type(odd) .content{
+          grid-column: content-right;
+        }
+        &:nth-of-type(even) .content{
+          grid-column: content-left;
+          text-align: right;
+
+          > p {
+            justify-self: end;
+          }
+
+        }
+
+        > *{
+          transition: opacity .3s ease-out, translate .3s ease-out, scale .6s var(--tf-bounce);
+        }
+
+        >.circle{
+          background-color: var(--_clr);
+          aspect-ratio: 1;
+          width: 75px;
+          grid-column: icon;
+          border-radius: 50%;
+
+          place-items: center;
+
+          &:not(.active), &:not(.active) + .content{
+            opacity: 0;
+            translate: 0 50px;
+            scale: .8;
+          } 
+
+          > svg{
+            aspect-ratio: 1;
+            width: 50%;
+          }
+        }
+
+        >.content{
+
+          grid-row: var(--_row);
+          transition-delay: .1s;
+
+          >h5{
+            color: var(--_clr);
+          }
+
+          >p{
+            width: 30ch;
+            text-wrap: pretty;
+          }
+        }
       }
 
     }
