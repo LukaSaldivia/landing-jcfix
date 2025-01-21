@@ -72,7 +72,8 @@ problemasSelect.addEventListener('change', () => {
 
 })
 
-// 
+// Roadmap 
+
 const guide_items = [...$$('.guide .guide-item .circle')]
 let last_intersected = 0
 
