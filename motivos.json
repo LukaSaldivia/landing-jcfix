@@ -1,1 +1,7 @@
-{"range":"Sheet1!A1:Z1000","majorDimension":"ROWS","values":[["motivo","min","max"],["No enciende","10000","15000"],["Se mojó","2000","6000"],["Ya no carga","9500","11500"],["La cámara está rota","25000","40000"],["No anda el táctil","60000","95000"]]}
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.18.0 (Ubuntu)</center>
+</body>
+</html>
