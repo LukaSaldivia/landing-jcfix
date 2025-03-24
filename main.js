@@ -74,7 +74,7 @@ problemasSelect.addEventListener('change', () => {
 
 // Roadmap 
 
-const guide_items = [...$$('.guide .guide-item .circle')]
+const guide_items = [...$$('.guia .guide-item .circle')]
 let last_intersected = 0
 
 const observer_guide_items = new IntersectionObserver((entries) => {
@@ -107,3 +107,36 @@ const observer_guide_items = new IntersectionObserver((entries) => {
 
 guide_items.map(guide_item => observer_guide_items.observe(guide_item))
 
+
+
+// Orbiting electrons
+
+let t = 0
+const electrons = $$('.electron')
+
+electrons.forEach(electron => {
+
+})
+
+function orbite(){
+  t+=0.05/(3*2)
+  electrons.forEach((electron) => {
+
+    const { level } = electron.dataset
+
+    let posX = (Math.sin(t - level * 2) + 1) * 50
+    let posY = (Math.cos(t - level * 2) + 1) * 50
+    
+    electron.style.left = `${posX}%`
+    electron.style.top = `${posY}%`
+
+    electron.style.scale = Math.min((posY / 100) + 0.2, 1)
+    electron.style.filter = `blur(${(1 - (posY / 100)) * 3}px)`
+    
+    console.log(posY / 100);
+    
+  })
+  requestAnimationFrame(orbite)
+}
+
+orbite()
