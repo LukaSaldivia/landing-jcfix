@@ -526,6 +526,8 @@ body>main {
 
   .presentacion{
 
+    row-gap: 60px;
+
     .system{
       display: grid;
 
@@ -558,7 +560,7 @@ body>main {
         border: 2px solid var(--clr-primary-400);
         border-radius: 50%;
 
-        --_large-height: calc( 160 * 2.5px - clamp(160px, 18vw, 300px));
+        --_large-height: 160px;
         --_middle-height: calc(var(--_large-height) / 1.5);
         --_small-height: calc(var(--_middle-height) / 1.5);
 
@@ -573,28 +575,30 @@ body>main {
           grid-area: orbit-large;
           --_own-height: var(--_large-height);
 
-          > .electron{
-            animation-delay: -1s;
-          }
+          border-width: 1px;
+          border-style: dashed;
           
         }
         &.middle{
           grid-area: orbit-middle;
           --_own-height: var(--_middle-height);
-          > .electron{
-            animation-delay: -2s;
-          }
+          
+          border-width: 2px;
+          border-style: dotted;
         }
         &.small{
           grid-area: orbit-small;
           --_own-height: var(--_small-height);
+          
+          border-width: 2px;
+          border-style: dashed;
         }
 
         /* z-index */
 
         &.front{
           z-index: 2;
-          clip-path: polygon(-50% 49%, 150% 49%, 150% 200%, -50% 200%);
+          clip-path: polygon(-50% 49.7%, 150% 49.7%, 150% 200%, -50% 200%);
         }
         
         &.back{
@@ -609,9 +613,8 @@ body>main {
 
           inset: 0;
 
-
           aspect-ratio: 1;
-          width: 60px;
+          width: clamp(30px, 10vw, 60px);
           background-color: var(--clr-primary-600);
           border-radius: 50%;
 
@@ -620,6 +623,9 @@ body>main {
           scale: calc(var(--_scale, 0));
 
           padding: 12px;
+
+          box-shadow: 0 0 0 0 var(--clr-primary-300);
+          animation: pulse 1s infinite;
 
           > svg{
             fill: var(--clr-neutral-light-500);
@@ -630,8 +636,12 @@ body>main {
       .nucleus{
         grid-area: nucleus;
         justify-self: center;
+        border-radius: 50%;
         z-index: 1;
         width: 80px;
+        box-shadow: 0 0 0 0 var(--clr-primary-500);
+
+        animation: pulse 1s infinite;
       }
 
 
@@ -672,6 +682,12 @@ body>footer {
 @keyframes slide {
   to {
     translate: -50%;
+  }
+}
+
+@keyframes pulse{
+  to{
+    box-shadow: 0 0 0 10px transparent;
   }
 }
 

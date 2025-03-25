@@ -115,11 +115,8 @@ let t = 0
 const electrons = $$('.electron')
 
 function orbite(){
-  t+=0.01
-
-  if (t == 1) {
-    t = 0
-  }
+  t = Date.now() / 2000
+  
 
   electrons.forEach((electron) => {
 
@@ -133,16 +130,8 @@ function orbite(){
     let data = {
       left: `${posX}%`,
       top: `${posY}%`,
-      filter: `blur(${(1 - (posY / 100)) * 3}px)`,
-      "--_scale": Math.min((posY / 100) + 0.2, 1)
+      "--_scale": Math.min((posY / 100) + 0.5, 1)
     }
-    
-    electron.style.left = 
-    electron.style.top = `${posY}%`    
-
-    
-
-    electron.style.filter = `blur(${(1 - (posY / 100)) * 3}px)`
 
     electron.setAttribute('style', Object.entries(data).map(([key, value]) => `${key}:${value}`).join(';'))
         
