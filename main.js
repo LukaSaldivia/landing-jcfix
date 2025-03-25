@@ -122,10 +122,10 @@ function orbite(){
   t+=0.05/(3*2)
   electrons.forEach((electron) => {
 
-    const { level } = electron.dataset
+    const { delay } = electron.dataset
 
-    let posX = (Math.sin(t - level * 2) + 1) * 50
-    let posY = (Math.cos(t - level * 2) + 1) * 50
+    let posX = (Math.sin(t - delay * 2) + 1) * 50
+    let posY = (Math.cos(t - delay * 2) + 1) * 50
     
     electron.style.left = `${posX}%`
     electron.style.top = `${posY}%`
