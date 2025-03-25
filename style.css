@@ -555,7 +555,7 @@ body>main {
 
 
       .orbit{
-        border: 1px solid #aaa;
+        border: 2px solid var(--clr-primary-400);
         border-radius: 50%;
 
         --_large-height: calc( 160 * 2.5px - clamp(160px, 18vw, 300px));
@@ -617,7 +617,13 @@ body>main {
 
           translate: -50% -50%;
 
-          animation: orbiting 7s infinite;
+          scale: calc(var(--_scale, 0));
+
+          padding: 12px;
+
+          > svg{
+            fill: var(--clr-neutral-light-500);
+          }
         }
       }
 
@@ -669,11 +675,6 @@ body>footer {
   }
 }
 
-@keyframes orbiting{
-  to{
-    rotate: 1turn;
-  }
-}
 
 *:has(>.marquee) {
 

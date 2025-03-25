@@ -114,27 +114,38 @@ guide_items.map(guide_item => observer_guide_items.observe(guide_item))
 let t = 0
 const electrons = $$('.electron')
 
-electrons.forEach(electron => {
-
-})
-
 function orbite(){
-  t+=0.05/(3*2)
+  t+=0.01
+
+  if (t == 1) {
+    t = 0
+  }
+
   electrons.forEach((electron) => {
 
-    const { delay } = electron.dataset
+    const { delay, speed } = electron.dataset
 
-    let posX = (Math.sin(t - delay * 2) + 1) * 50
-    let posY = (Math.cos(t - delay * 2) + 1) * 50
     
-    electron.style.left = `${posX}%`
-    electron.style.top = `${posY}%`
 
-    electron.style.scale = Math.min((posY / 100) + 0.2, 1)
+    let posX = (Math.sin(t * speed - delay * 2) + 1) * 50
+    let posY = (Math.cos(t * speed - delay * 2) + 1) * 50 
+
+    let data = {
+      left: `${posX}%`,
+      top: `${posY}%`,
+      filter: `blur(${(1 - (posY / 100)) * 3}px)`,
+      "--_scale": Math.min((posY / 100) + 0.2, 1)
+    }
+    
+    electron.style.left = 
+    electron.style.top = `${posY}%`    
+
+    
+
     electron.style.filter = `blur(${(1 - (posY / 100)) * 3}px)`
-    
-    console.log(posY / 100);
-    
+
+    electron.setAttribute('style', Object.entries(data).map(([key, value]) => `${key}:${value}`).join(';'))
+        
   })
   requestAnimationFrame(orbite)
 }
