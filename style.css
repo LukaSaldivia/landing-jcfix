@@ -98,7 +98,10 @@ img {
   font-style: italic;
   shape-margin: 1rem;
 }
-
+.imgLogo{
+  width: 8%;
+  height: 8%;
+}
 .stack {
   display: grid;
   grid-template-areas: "stack";
