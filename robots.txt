@@ -1,0 +1,17 @@
+# robots.txt para JC-Fix Servicio Técnico
+# https://jcfix.netlify.app/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://jcfix.netlify.app/sitemap.xml
+
+# Archivos y directorios que no necesitan indexarse
+Disallow: /img/*.png
+Disallow: /img/*.jpg
+Disallow: /img/*.jpeg
+Disallow: /*.json$
+
+# Crawl-delay (opcional, ayuda a servidores pequeños)
+Crawl-delay: 1

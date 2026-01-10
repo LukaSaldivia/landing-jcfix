@@ -109,34 +109,118 @@ guide_items.map(guide_item => observer_guide_items.observe(guide_item))
 
 
 
-// Orbiting electrons
+// Código de órbitas animadas eliminado - ahora usamos diseño estático
+// La sección "Presentación" ahora usa un diseño estático profesional con efectos hover
 
-let t = 0
-const electrons = $$('.electron')
+// Mobile Navigation Toggle
+const navToggle = $('.nav-toggle')
+const nav = $('nav')
+const navLinks = [...$$('nav a')]
 
-function orbite(){
-  t = Date.now() / 2000
-  
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = navToggle.getAttribute('aria-expanded') === 'true'
 
-  electrons.forEach((electron) => {
+    // Toggle estados
+    navToggle.setAttribute('aria-expanded', !isOpen)
+    nav.classList.toggle('nav-open')
+    header.classList.toggle('nav-active')
 
-    const { delay, speed } = electron.dataset
-
-    
-
-    let posX = (Math.sin(t * speed - delay * 2) + 1) * 50
-    let posY = (Math.cos(t * speed - delay * 2) + 1) * 50 
-
-    let data = {
-      left: `${posX}%`,
-      top: `${posY}%`,
-      "--_scale": Math.min((posY / 100) + 0.5, 1)
-    }
-
-    electron.setAttribute('style', Object.entries(data).map(([key, value]) => `${key}:${value}`).join(';'))
-        
+    // Prevenir scroll cuando el menú está abierto
+    document.body.style.overflow = !isOpen ? 'hidden' : ''
   })
-  requestAnimationFrame(orbite)
+
+  // Los links ahora se manejan con el smooth scroll más abajo
+  // (Combinado para evitar conflictos)
+
+  // Cerrar menú al hacer click en el overlay
+  header.addEventListener('click', (e) => {
+    if (header.classList.contains('nav-active') && e.target === header) {
+      navToggle.setAttribute('aria-expanded', 'false')
+      nav.classList.remove('nav-open')
+      header.classList.remove('nav-active')
+      document.body.style.overflow = ''
+    }
+  })
+
+  // Cerrar menú con tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+      navToggle.setAttribute('aria-expanded', 'false')
+      nav.classList.remove('nav-open')
+      header.classList.remove('nav-active')
+      document.body.style.overflow = ''
+    }
+  })
 }
 
-orbite()
+// Smooth Scroll personalizado más lento
+const smoothScrollTo = (target, duration = 1800) => {
+  const targetElement = $(target)
+  if (!targetElement) return
+
+  // Respetar preferencias de accesibilidad
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (prefersReducedMotion) {
+    targetElement.scrollIntoView({ block: 'start' })
+    return
+  }
+
+  const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 80
+  const startPosition = window.pageYOffset
+  const distance = targetPosition - startPosition
+  let startTime = null
+
+  // Easing function para animación suave (ease-in-out-cubic)
+  const easeInOutCubic = (t) => {
+    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
+  }
+
+  const animation = (currentTime) => {
+    if (startTime === null) startTime = currentTime
+    const timeElapsed = currentTime - startTime
+    const progress = Math.min(timeElapsed / duration, 1)
+    const ease = easeInOutCubic(progress)
+
+    window.scrollTo(0, startPosition + distance * ease)
+
+    if (timeElapsed < duration) {
+      requestAnimationFrame(animation)
+    }
+  }
+
+  requestAnimationFrame(animation)
+}
+
+// Aplicar smooth scroll a todos los links del nav - Esperar a que el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+  const allNavLinks = [...$$('nav a[href^="#"]')]
+
+  console.log('Smooth scroll activado en', allNavLinks.length, 'links')
+
+  allNavLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+
+      const targetId = link.getAttribute('href')
+      console.log('Navegando a:', targetId)
+
+      // Cerrar menú mobile si está abierto
+      if (navToggle && nav.classList.contains('nav-open')) {
+        navToggle.setAttribute('aria-expanded', 'false')
+        nav.classList.remove('nav-open')
+        header.classList.remove('nav-active')
+        document.body.style.overflow = ''
+
+        // Pequeño delay para que el menú se cierre antes del scroll
+        setTimeout(() => {
+          smoothScrollTo(targetId)
+        }, 300)
+      } else {
+        // Desktop: scroll inmediato
+        smoothScrollTo(targetId)
+      }
+    })
+  })
+})
